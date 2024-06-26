@@ -10,72 +10,69 @@ public class TeamProGenerator {
 	public static void main(String[] args) {
 		PrintStream ps = null;
 		FileOutputStream fos = null;
-		String[] cars = { "모닝", "k3", "k5", "그랜저", "BMW", "펠리세이드", "카니발" };
+		String[] cars = { "토요타 위고", "혼다 시티", "토요타 비오스", "혼다 어코드", "혼다 BR-V", "토요타 포츄너", "토요타 이노바" };
 		String[] remark = { "몰라요", "싫어요", "그냥이요" };
 
 		try {
 			fos = new FileOutputStream("src/ch14_collection/car_rental_car.txt");
 			ps = new PrintStream(fos);
 
-			for (int nat = 1; nat <= 35; nat++) {
-				for (int i = 0; i < 100; i++) {
-					// 렌터카 일련번호
-					ps.print(i + 100);
-					
-					// 국가 번호
-					ps.print(", nat" + nat);
-					
-					// 차 타입
-					int type = (int) (Math.random() * 7);
-					if (type == 0) {
-						ps.print(", 소형차");
-					} else if (type == 1 || type == 2 || type == 3 || type == 4) {
-						ps.print(", 승용차");
-					} else if (type == 5 || type == 6) {
-						ps.print(", SUV");
-					}
+			for (int i = 0; i < 20; i++) {
+				// 렌터카 일련번호
+				ps.print("PHL" + (i + 1000));
 
-					// 차 종류
-					ps.print(", " + cars[type]);
+				// 국가 번호
+				ps.print(", PHL");
 
-					// 렌트 비용
-					// 모닝
-					int price1 = (int) ((Math.random() + 1) * 20000);
-					// k3, k5
-					int price2 = (int) ((Math.random() + 1) * 23000);
-					// 그랜저, 카니발
-					int price3 = (int) ((Math.random() + 1) * 26000);
-					// 펠리세이드
-					int price4 = (int) ((Math.random() + 1) * 30000);
-					// bmw
-					int price5 = (int) ((Math.random() + 1) * 40000);
-
-					if (type == 0) {
-						ps.print(", " + (price1 / 1000) * 1000);
-					} else if (type == 1 || type == 2) {
-						ps.print(", " + (price2 / 1000) * 1000);
-					} else if (type == 3 || type == 6) {
-						ps.print(", " + (price3 / 1000) * 1000);
-					} else if (type == 5) {
-						ps.print(", " + (price4 / 1000) * 1000);
-					} else if (type == 4) {
-						ps.print(", " + (price5 / 1000) * 1000);
-					}
-
-					// 렌터카 회사
-					int cop = (int) (Math.random() * 4);
-					if (cop == 0) {
-						ps.print(", sk렌터카");
-					} else if (cop == 1) {
-						ps.print(", kb렌터카");
-					} else if (cop == 2) {
-						ps.print(", 롯데렌터카");
-					} else if (cop == 3) {
-						ps.print(", k렌터카");
-					}
-					ps.println();
+				// 차 타입
+				int type = (int) (Math.random() * 7);
+				if (type == 0) {
+					ps.print(", 소형차");
+				} else if (type == 1 || type == 2 || type == 3 || type == 4) {
+					ps.print(", 승용차");
+				} else if (type == 5 || type == 6) {
+					ps.print(", SUV");
 				}
+
+				// 차 종류
+				ps.print(", " + cars[type]);
+
+				// 렌트 비용
+				// 모닝
+				int price1 = (int) ((Math.random() + 1) * 2000);
+				// k3, k5
+				int price2 = (int) ((Math.random() + 1) * 2300);
+				// 그랜저, 카니발
+				int price3 = (int) ((Math.random() + 1) * 2600);
+				// 펠리세이드
+				int price4 = (int) ((Math.random() + 1) * 3000);
+				// bmw
+				int price5 = (int) ((Math.random() + 1) * 4000);
+
+				if (type == 0) {
+					ps.print(", " + (price1 / 100) * 100);
+				} else if (type == 1 || type == 2) {
+					ps.print(", " + (price2 / 100) * 100);
+				} else if (type == 3 || type == 6) {
+					ps.print(", " + (price3 / 100) * 100);
+				} else if (type == 5) {
+					ps.print(", " + (price4 / 100) * 100);
+				} else if (type == 4) {
+					ps.print(", " + (price5 / 100) * 100);
+				}
+
+				// 렌터카 회사
+				int cop = (int) (Math.random() * 3);
+				if (cop == 0) {
+					ps.print(", 마닐라 렌터카");
+				} else if (cop == 1) {
+					ps.print(", 세부 렌터카");
+				} else if (cop == 2) {
+					ps.print(", 다바오 렌터카");
+				}
+				ps.println();
 			}
+
 			System.out.println("파일 생성 완료");
 			ps.flush();
 			ps.close();
